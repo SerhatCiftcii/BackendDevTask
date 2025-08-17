@@ -1,15 +1,15 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.JsonWebTokens;
+﻿using MyProject.Core.Interfaces; 
+using MyProject.Core.Models; 
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using MyProject.Core.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
 namespace MyProject.Infrastructure.Services
 {
-    public class JwtTokenGenerator
+    //IJwt Arayüzünü brda implemente edicez eksik kısmı yazdım.
+    public class JwtTokenGenerator : IJwtTokenGenerator
     {
         private readonly IConfiguration _configuration;
 
