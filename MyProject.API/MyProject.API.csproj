@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MyProject.Application\MyProject.Application.csproj" />
     <ProjectReference Include="..\MyProject.Core\MyProject.Core.csproj" />
     <ProjectReference Include="..\MyProject.Infrastructure\MyProject.Infrastructure.csproj" />
