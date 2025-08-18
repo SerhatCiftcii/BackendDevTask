@@ -15,8 +15,4 @@
     <ProjectReference Include="..\MyProject.Core\MyProject.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Products\" />
-  </ItemGroup>
-
 </Project>
