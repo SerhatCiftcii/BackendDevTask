@@ -14,12 +14,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // SeriLog'u yapýlandýrýyoruz.
 // Normalde bu kadar uzun olmaz, ama her þeyi adým adým ekliyoruz.
+// SeriLog'u yapýlandýrýyoruz.
 builder.Host.UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
     .ReadFrom.Configuration(hostingContext.Configuration)
     .Enrich.FromLogContext()
     .WriteTo.Console()
     .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
-);
+    .MinimumLevel.Information() // Varsayýlan log seviyesini Warning'e çektik
+    .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)  // Microsoft loglarýný warning seviyesinden düþükse gösterme ***  bunu yapa sebebim log dosyasý çok þiþiyor.
+    .MinimumLevel.Override("Microsoft.EntityFrameworkCore", Serilog.Events.LogEventLevel.Warning)); // EF Core loglarýný warning seviyesinden düþükse gösterme
 
 // PostgreSQL veritabaný baðlantýmýzý ve EF Core servisimizi ekliyoruz.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
